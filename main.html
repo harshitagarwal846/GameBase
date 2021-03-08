@@ -9,23 +9,25 @@
 </head>
 <link rel="stylesheet" href="main.css">
 <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&family=Ubuntu+Mono&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/8af6f81983.js" crossorigin="anonymous"></script>
 
-<body>
+<body onload="optSel()">
   <div class="main">
     <div class="header">
       <h1>GameIt</h1>
-      <select name="filter" id="filterid">
-        <option class="options" value="Filter-1">Filter-1</option>
-        <option class="options" value="Filter-2">Filter-2</option>
-        <option class="options" value="Filter-3">Filter-3</option>
-        <option class="options" value="Filter-4">Filter-4</option>
-        <option class="options" value="Filter-5">Filter-5</option>
-        <option class="options" value="Filter-6">Filter-6</option>
-        <option class="options" value="Filter-7">Filter-7</option>
-        <option class="options" value="Filter-8">Filter-8</option>
-        <option class="options" value="Filter-9">Filter-9</option>
-        <option class="options" value="Filter-10">Filter-10</option>
+      <select name="filter" id="filterid" onchange="changed()">
+        <!-- <option class="options" disabled="disabled" selected="selected">Select Genre</option> -->
+        <option class="options" value="Best">Best</option>
+        <option class="options" value="Arcade">Arcade</option>
+        <option class="options" value="Cards">Cards</option>
+        <option class="options" value="Girls">Girls</option>
+        <option class="options" value="Puzzle">Puzzle</option>
+        <option class="options" value="Quiz">Quiz</option>
+        <option class="options" value="Racing">Racing</option>
+        <option class="options" value="Sports">Sports</option>
+
       </select>
       <div class="search">
         <i class="fa fa-search"></i>
@@ -39,20 +41,71 @@
     <!-- <button id="logout" onclick="logout()">logout</button> -->
     <div class="games">
       <div class="game" id="game1">
+
         <div class="flip" id="flip1">
-          <h3>Heading</h3>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi dolores suscipit in veniam ad esse
-            perspiciatis corporis tempora officiis quaerat.</p>
+          <h3 id="head1"></h3>
+          <br>
+          <p id="desc1"></p>
         </div>
       </div>
-      <div class="game" id="game2"></div>
-      <div class="game" id="game3"></div>
-      <div class="game" id="game4"></div>
-      <div class="game" id="game5"></div>
-      <div class="game" id="game6"></div>
-      <div class="game" id="game7"></div>
-      <div class="game" id="game8"></div>
+      <div class="game" id="game2">
+
+        <div class="flip" id="flip2">
+          <h3 id="head2"></h3>
+          <br>
+          <p id="desc2"></p>
+        </div>
+      </div>
+      <div class="game" id="game3">
+
+        <div class="flip" id="flip3">
+          <h3 id="head3"></h3>
+          <br>
+          <p id="desc3"></p>
+        </div>
+      </div>
+      <div class="game" id="game4">
+
+        <div class="flip" id="flip4">
+          <h3 id="head4"></h3>
+          <br>
+          <p id="desc4"></p>
+        </div>
+      </div>
+      <div class="game" id="game5">
+
+        <div class="flip" id="flip5">
+          <h3 id="head5"></h3>
+          <br>
+          <p id="desc5"></p>
+        </div>
+      </div>
+      <div class="game" id="game6">
+
+        <div class="flip" id="flip6">
+          <h3 id="head6"></h3>
+          <br>
+          <p id="desc6"></p>
+        </div>
+      </div>
+      <div class="game" id="game7">
+
+        <div class="flip" id="flip7">
+          <h3 id="head7"></h3>
+          <br>
+          <p id="desc7"></p>
+        </div>
+      </div>
+      <div class="game" id="game8">
+
+        <div class="flip" id="flip8">
+          <h3 id="head8"></h3>
+          <br>
+          <p id="desc8"></p>
+        </div>
+      </div>
     </div>
+
   </div>
 </body>
 
