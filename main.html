@@ -27,18 +27,36 @@
         <option class="options" value="Quiz">Quiz</option>
         <option class="options" value="Racing">Racing</option>
         <option class="options" value="Sports">Sports</option>
-
+        
       </select>
-      <div class="search">
-        <i class="fa fa-search"></i>
-        <input type="text" name="text" placeholder="Search">
+      <div class="searchbar">
+        <div class="search">
+          <i class="fa fa-search"></i>
+          <input type="text" name="text" placeholder="Search (Enter at least two characters)">
+        </div>
+        <ul id="gamelist">
+          <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+          <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+          <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+          <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+          <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+          <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+          <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+          <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+          <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+          <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+        </ul>
       </div>
       <div class="user">
-        <i class="fa fa-user"></i>
+        <select name="user" id="useroptions">
+          <option class="option" disabled="disabled" selected="selected">Options</option>
+          <option value="Admin">Admin Portal</option>
+          <option value="logout" onclick="logout()">Logout</option>
+        </select>
       </div>
       <h4>A fathomless world of online games</h4>
     </div>
-    <!-- <button id="logout" onclick="logout()">logout</button> -->
+    <button id="logout" onclick="logout()">logout</button>
     <div class="games">
       <div class="game" id="game1">
 

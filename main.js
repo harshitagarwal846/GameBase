@@ -47,7 +47,7 @@ function optSel() {
       document.getElementById("desc" + (num)).innerHTML = snap.child("Desc").val();
       document.getElementById("game" + (num)).addEventListener("click", () => {
         // window.open(loc, "_blank");
-        location.href=loc;
+        location.href = loc;
       });
 
       let flip = document.getElementById("flip" + (num));
@@ -70,6 +70,35 @@ function optSel() {
 function changed() {
   optSel();
 }
+var names = [];
+for (let i = 1; i <= 8; i++) {
+  firebase.database().ref().child("Best").child(i).on("value", (snap) => {
+    names[i - 1] = snap.child("Name").val();
+  });
+  firebase.database().ref().child("Arcade").child(i).on("value", (snap) => {
+    names[8 + i - 1] = snap.child("Name").val();
+  });
+  firebase.database().ref().child("Cards").child(i).on("value", (snap) => {
+    names[16 + i - 1] = snap.child("Name").val();
+  });
+  firebase.database().ref().child("Girls").child(i).on("value", (snap) => {
+    names[24 + i - 1] = snap.child("Name").val();
+  });
+  firebase.database().ref().child("Puzzle").child(i).on("value", (snap) => {
+    names[32 + i - 1] = snap.child("Name").val();
+  });
+  firebase.database().ref().child("Quiz").child(i).on("value", (snap) => {
+    names[40 + i - 1] = snap.child("Name").val();
+  });
+  firebase.database().ref().child("Racing").child(i).on("value", (snap) => {
+    names[48 + i - 1] = snap.child("Name").val();
+  });
+  firebase.database().ref().child("Sports").child(i).on("value", (snap) => {
+    names[56 + i - 1] = snap.child("Name").val();
+  });
+}
 
-
+function dropdown(){
+  document.getElementById("content").classList.toggle("show");
+}
 
