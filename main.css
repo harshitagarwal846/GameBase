@@ -25,9 +25,9 @@
     margin-bottom: 25px;
     position: sticky;
 }
-.header:not(#gamelist){
+/* .header:not(#gamelist){
     z-index: -1;
-}
+} */
 h1{
     font-size: 60px;
     display: inline-block;
@@ -37,7 +37,7 @@ h4{
     font-size: 20px;
     border-left: 5px solid #ff7777;
     padding: 0px 0px 0px 5px;
-    margin-left: 7px;
+    margin: 5px 0px 0px 5px;
     /* border: 4px solid red; */
 }
 #filterid{
@@ -58,7 +58,7 @@ h4{
     display: inline-block;
 }
 .search{
-    margin-left: 90px;
+    margin-left: 50px;
     display: inline-block;
     background-color: #ffffff;                               
     border-radius: 18px;
@@ -74,7 +74,7 @@ h4{
     width: 400px;
 }
 /* .header input:hover{
-
+    
     background-color: rgba(255, 255, 255, 0.048);
 } */
 .search i{
@@ -84,41 +84,44 @@ h4{
 /* .search:hover{
     background-color: rgba(255, 255, 255, 0.848);
 } */
+#gamelist{
+    position: absolute;
+}
+.result{
+    display: none;
+    margin-left: 60px;
+    font-size: 20px;
+    list-style-type: none;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background-color: white;
+    padding: 5px 20px;
+    color: rgb(221, 62, 62);
+    
+}
 #gamelist a{
     text-decoration: none;
-    color: white;
+}
+.result:hover{
+    cursor: pointer;
+    background-color: rgb(179, 171, 171);
 }
 .user{
-    /* position: relative; */
     display: inline-block;
-    /* margin-left: 90px; */
-    background-color: white;
-    border-radius: 10px;
 }
-/* .user i{
-    color: black;
-    padding: 7px;
-    font-size: 25px;;
+#useroptions{
+    width: 150px;
+    font-size: 18px;
+    padding: 10px 12px;
+    text-align-last: center;
+    border-radius: 22px;
+    margin-left: 45px;
+    color: rgb(221, 62, 62);
+    outline: none;
+    box-shadow: 0px 0px 5px white;
 }
-.user i:hover{
+#useroptions:hover{
     cursor: pointer;
 }
-#content{
-    display: none;
-    position: absolute;
-    z-index: 1;
-    right: 0;
-    background-color: white;
-}
-#content a{
-    color: black;
-    text-decoration: none;
-    display: block;
-}
-.show{
-    display: block;
-} */
-
 .games{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -145,7 +148,7 @@ h4{
     left: 0;
     right: 0;
     bottom: 0;
-    transform: translateY(69%);
+    transform: translateY(71%);
     /* transition: all 0.5s; */
     color: white;
     margin: 4px;

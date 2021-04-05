@@ -32,31 +32,31 @@
       <div class="searchbar">
         <div class="search">
           <i class="fa fa-search"></i>
-          <input type="text" name="text" placeholder="Search (Enter at least two characters)">
+          <input type="text" name="text" id="searchgame" placeholder="Search (Enter at least two characters)">
         </div>
         <ul id="gamelist">
-          <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
-          <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
-          <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
-          <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
-          <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
-          <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
-          <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
-          <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
-          <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
-          <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+          <li class=result id="name1"><a href="#" id="link1">Lorem ipsum dolor sit amet.</a></li>
+          <li class=result id="name2"><a href="#" id="link2">Lorem ipsum dolor sit amet.</a></li>
+          <li class=result id="name3"><a href="#" id="link3">Lorem ipsum dolor sit amet.</a></li>
+          <li class=result id="name4"><a href="#" id="link4">Lorem ipsum dolor sit amet.</a></li>
+          <li class=result id="name5"><a href="#" id="link5">Lorem ipsum dolor sit amet.</a></li>
+          <li class=result id="name6"><a href="#" id="link6">Lorem ipsum dolor sit amet.</a></li>
+          <li class=result id="name7"><a href="#" id="link7">Lorem ipsum dolor sit amet.</a></li>
+          <li class=result id="name8"><a href="#" id="link8">Lorem ipsum dolor sit amet.</a></li>
+          <li class=result id="name9"><a href="#" id="link9">Lorem ipsum dolor sit amet.</a></li>
+          <li class=result id="name10"><a href="#" id="link10">Lorem ipsum dolor sit amet.</a></li>
         </ul>
       </div>
       <div class="user">
-        <select name="user" id="useroptions">
+        <select name="user" id="useroptions" onchange="optionselect()">
           <option class="option" disabled="disabled" selected="selected">Options</option>
           <option value="Admin">Admin Portal</option>
-          <option value="logout" onclick="logout()">Logout</option>
+          <option value="logout">Logout</option>
         </select>
       </div>
       <h4>A fathomless world of online games</h4>
     </div>
-    <button id="logout" onclick="logout()">logout</button>
+    
     <div class="games">
       <div class="game" id="game1">
 

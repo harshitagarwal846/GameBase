@@ -71,34 +71,74 @@ function changed() {
   optSel();
 }
 var names = [];
+var links = [];
 for (let i = 1; i <= 8; i++) {
   firebase.database().ref().child("Best").child(i).on("value", (snap) => {
     names[i - 1] = snap.child("Name").val();
+    links[i - 1] = snap.child("Link").val();
   });
   firebase.database().ref().child("Arcade").child(i).on("value", (snap) => {
     names[8 + i - 1] = snap.child("Name").val();
+    links[8 + i - 1] = snap.child("Link").val();
   });
   firebase.database().ref().child("Cards").child(i).on("value", (snap) => {
     names[16 + i - 1] = snap.child("Name").val();
+    links[16 + i - 1] = snap.child("Link").val();
   });
   firebase.database().ref().child("Girls").child(i).on("value", (snap) => {
     names[24 + i - 1] = snap.child("Name").val();
+    links[24 + i - 1] = snap.child("Link").val();
   });
   firebase.database().ref().child("Puzzle").child(i).on("value", (snap) => {
     names[32 + i - 1] = snap.child("Name").val();
+    links[32 + i - 1] = snap.child("Link").val();
   });
   firebase.database().ref().child("Quiz").child(i).on("value", (snap) => {
     names[40 + i - 1] = snap.child("Name").val();
+    links[40 + i - 1] = snap.child("Link").val();
   });
   firebase.database().ref().child("Racing").child(i).on("value", (snap) => {
     names[48 + i - 1] = snap.child("Name").val();
+    links[48 + i - 1] = snap.child("Link").val();
   });
   firebase.database().ref().child("Sports").child(i).on("value", (snap) => {
     names[56 + i - 1] = snap.child("Name").val();
+    links[56 + i - 1] = snap.child("Link").val();
   });
 }
 
-function dropdown(){
+function dropdown() {
   document.getElementById("content").classList.toggle("show");
 }
 
+function optionselect() {
+  let option = document.getElementById("useroptions").value;
+  if (option === "logout")
+    var con = confirm("Are you sure you want to logout?");
+  if (con == true)
+    logout();
+  // window.alert(option);
+}
+
+let searchgame = document.getElementById("searchgame");
+searchgame.addEventListener("keyup", () => {
+  let c = 1;
+  for (let i = 1; i < 10; i++) {
+    document.getElementById("name" + (i)).style.display = "none";
+  }
+  let inputvalue = searchgame.value.toUpperCase();
+  if (inputvalue.length >= 2) {
+    for (let i = 0; i < 64; i++) {
+      if (names[i].indexOf(inputvalue) > -1) {
+        document.getElementById("name" + (c)).innerHTML = names[i];
+        // document.getElementById("link"+(c)).href=links[i];
+        c++;
+        console.log(names[i]);
+        // console.log(links[i]);
+      }
+    }
+  }
+  for (let i = 1; i < c; i++) {
+    document.getElementById("name" + (i)).style.display = "block";
+  }
+});
