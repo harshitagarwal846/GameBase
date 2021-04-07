@@ -128,6 +128,7 @@ h4{
     padding: 5px;
     border-radius: 17px;
     background-color: #fd7d7dba;
+    outline: none;
 }
 #btn_login:hover{
     cursor: pointer;
@@ -147,10 +148,12 @@ h4{
 #google{
     background-color: #4285f4;
     border: #4285f4;
+    outline: none;
 }
 #facebook{
     background-color: #4267b2;
     border: #4267b2;
+    outline: none;
 }
 #google:hover{
     cursor: pointer;
@@ -190,6 +193,7 @@ h4{
     padding: 5px;
     border-radius: 17px;
     background-color: #fd7d7dba;
+    outline: none;
 }
 #btn_reset:hover{
     cursor: pointer;

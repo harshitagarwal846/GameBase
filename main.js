@@ -33,11 +33,18 @@ function logout() {
 }
 
 let selected;
+var c;
+firebase.database().ref().child("New").on("value", function (snapshot) {
+   c = snapshot.numChildren();
+});
+console.log(c);
 function optSel() {
   selected = document.getElementById("filterid").value;
 
   let game = firebase.database().ref().child(selected);
-  console.log(game.child.length);
+  // game.on("value", (snap) => {
+  //   console.log(snap.numChildren());
+  // });
   const details = (num) => {
     document.getElementById("game" + (num)).style.display = "block";
     game.child(num).on("value", (snap) => {
@@ -63,8 +70,16 @@ function optSel() {
       });
     });
   }
-  for (let i = 1; i <= 8; i++) {
-    details(i);
+  if (selected === "New") {
+    for (let i = 1; i <= c; i++)
+      details(i);
+    for (let i = c + 1; i <= 8; i++)
+      document.getElementById("game" + (i)).style.display = "none";
+  }
+  else {
+    for (let i = 1; i <= 8; i++) {
+      details(i);
+    }
   }
 }
 
@@ -76,6 +91,7 @@ var names = [];
 var links = [];
 var images = [];
 var descs = [];
+
 for (let i = 1; i <= 8; i++) {
   firebase.database().ref().child("Best").child(i).on("value", (snap) => {
     names[i - 1] = snap.child("Name").val();
@@ -125,12 +141,12 @@ for (let i = 1; i <= 8; i++) {
     images[56 + i - 1] = snap.child("Image").val();
     descs[56 + i - 1] = snap.child("Desc").val();
   });
-  // firebase.database().ref().child("New").child(i).on("value", (snap) => {
-  //   names[64 + i - 1] = snap.child("Name").val();
-  //   links[64 + i - 1] = snap.child("Link").val();
-  //   images[64 + i - 1] = snap.child("Image").val();
-  //   descs[64 + i - 1] = snap.child("Desc").val();
-  // });
+  firebase.database().ref().child("New").child(i).on("value", (snap) => {
+    names[64 + i - 1] = snap.child("Name").val();
+    links[64 + i - 1] = snap.child("Link").val();
+    images[64 + i - 1] = snap.child("Image").val();
+    descs[64 + i - 1] = snap.child("Desc").val();
+  });
 }
 
 function optionselect() {
@@ -139,36 +155,36 @@ function optionselect() {
     var con = confirm("Are you sure you want to logout?");
   if (con == true)
     logout();
-  if(option==="admin")
-    window.open("admin.html","_blank");
+  if (option === "admin")
+    window.open("admin.html", "_blank");
   // window.alert(option);
 }
 
 var index = [];
 let searchgame = document.getElementById("searchgame");
 searchgame.addEventListener("keyup", () => {
-  let c = 1;
+  let count = 1;
   for (let i = 1; i <= 10; i++) {
     document.getElementById("name" + (i)).style.display = "none";
   }
   let inputvalue = searchgame.value.toUpperCase();
   if (inputvalue.length >= 2) {
-    for (let i = 0; i < 64; i++) {
+    for (let i = 0; i < 64 + c; i++) {
       if (names[i].indexOf(inputvalue) > -1) {
-        document.getElementById("name" + (c)).innerHTML = names[i];
-        index[c - 1] = i;
-        c++;
+        document.getElementById("name" + (count)).innerHTML = names[i];
+        index[count - 1] = i;
+        count++;
         // console.log(names[i]);
         // console.log(links[i]);
       }
     }
   }
-  for (let i = 1; i < c; i++) {
+  for (let i = 1; i < count; i++) {
     document.getElementById("name" + (i)).style.display = "block";
     document.getElementById("name" + (i)).addEventListener("click", () => {
-      for (let j = 1; j < c; j++)   //removes all search results
-        document.getElementById("name" + (j)).style.display = "none";   
-      searchgame.value="";    //clears the text inside search box
+      for (let j = 1; j < count; j++)   //removes all search results
+        document.getElementById("name" + (j)).style.display = "none";
+      searchgame.value = "";    //clears the text inside search box
       document.getElementById("game1").style.backgroundImage = "url('" + images[index[i - 1]] + "')";
       document.getElementById("head1").innerHTML = names[index[i - 1]];
       document.getElementById("desc1").innerHTML = descs[index[i - 1]];
