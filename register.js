@@ -13,22 +13,39 @@
 
 firebase.auth.Auth.Persistence.SESSION;
 
+var enter = document.getElementById("cnfpassword");
+enter.addEventListener("keyup", (snap) => {
+  if (snap.keyCode === 13) {
+    snap.preventDefault();
+    document.getElementById("btn_register").click();
+  }
+});
+
 function register() {
   let email = document.getElementById("email").value;
+  let dob = document.getElementById("dob").value;
   let password = document.getElementById("password").value;
   let cnfpassword = document.getElementById("cnfpassword").value;
   if (password == cnfpassword) {
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+    
+    })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
 
-      window.alert("Error : " + errorMessage);
-    });
+        window.alert("Error : " + errorMessage);
+      });
+      let newUser = firebase.database().ref().child("Users").push();
+      newUser.child("Email").set(email);
+      newUser.child("DOB").set(dob);
+      newUser.child("Password").set(password);
+      newUser.child("Admin").set("False");
   }
   else {
     window.alert("Password does not match");
-
   }
+
 }
 
 firebase.auth().onAuthStateChanged(function (user) {
@@ -38,5 +55,9 @@ firebase.auth().onAuthStateChanged(function (user) {
   }
 });
 
+function preloader() {
+  document.getElementById("loading").style.display = "none";
 
+}
 
+setTimeout(preloader, 3000);

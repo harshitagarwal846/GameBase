@@ -1,22 +1,8 @@
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-var firebaseConfig = {
-  apiKey: "AIzaSyCDMvFD5zthICujULAK7ocBmpZamJ7View",
-  authDomain: "gamebase-fa264.firebaseapp.com",
-  projectId: "gamebase-fa264",
-  storageBucket: "gamebase-fa264.appspot.com",
-  messagingSenderId: "307863343800",
-  appId: "1:307863343800:web:8a4bf144a06b04f4869a4d",
-  measurementId: "G-5L8T4Q6WGY"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     // User is signed in.
-    //   window.location.href="main.html";
+
   } else {
     window.location.href = "login.html";
     // No user is signed in.
@@ -35,7 +21,7 @@ function logout() {
 let selected;
 var c;
 firebase.database().ref().child("New").on("value", function (snapshot) {
-   c = snapshot.numChildren();
+  c = snapshot.numChildren();
 });
 console.log(c);
 function optSel() {
@@ -149,6 +135,37 @@ for (let i = 1; i <= 8; i++) {
   });
 }
 
+function admin() {
+  let email = prompt("Please enter your email");
+  let password = prompt("Please enter your password");
+  var ref = firebase.database().ref("Users");
+  var emails, admins, pass, check = 0;
+  ref.on("value", (snap) => {
+    console.log(snap.val());
+    var users = snap.val();
+    var keys = Object.keys(users);
+    console.log(keys);  
+    for (let i = 0; i < keys.length; i++) {
+      var k = keys[i];
+      emails = users[k].Email;
+      admins = users[k].Admin;
+      pass = users[k].Password;
+      console.log(emails, admins, k);
+      if (emails === email && pass === password) {
+        if (admins === "True")
+          window.open("admin.html", "_blank");
+        else
+          window.alert("Sorry you're not an admin!");
+        check = 1;
+        break;
+      }
+    }
+    if (check == 0)
+      window.alert("Wrong credentials!");
+  });
+}
+
+
 function optionselect() {
   let option = document.getElementById("useroptions").value;
   if (option === "logout")
@@ -156,7 +173,7 @@ function optionselect() {
   if (con == true)
     logout();
   if (option === "admin")
-    window.open("admin.html", "_blank");
+    admin();
   // window.alert(option);
 }
 
@@ -198,4 +215,9 @@ searchgame.addEventListener("keyup", () => {
   }
 });
 
+function preloader() {
+  document.getElementById("loading").style.display = "none";
 
+}
+
+setTimeout(preloader,3000);

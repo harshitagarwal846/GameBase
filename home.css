@@ -1,7 +1,8 @@
 *{
     padding: 0%;
     margin: 0%;
-}#heading{
+}
+#heading{
     color: rgb(255,15,15);
     text-shadow: 4px 3px 2px #000000;
     padding: 2px 9px;
@@ -47,7 +48,7 @@ p{
     visibility: hidden;
 }
 .container::before{
-    background: url(Images/bg1.jpg) no-repeat center center/cover;
+    background: url(Images/bg1.jpg) no-repeat center center;
     background-size: cover;
     content: "";
     position: absolute;

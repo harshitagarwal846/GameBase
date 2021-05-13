@@ -13,6 +13,13 @@
 
 firebase.auth.Auth.Persistence.SESSION;
 
+var enter=document.getElementById("password");
+enter.addEventListener("keyup",(snap)=>{
+  if (snap.keyCode === 13) {
+    snap.preventDefault(); 
+    document.getElementById("btn_login").click();
+  }
+});
 
 function login() {
   let email = document.getElementById("email").value;
@@ -28,9 +35,12 @@ function login() {
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     // User is signed in.
+    // console.log(user.email);
+    // console.log(user.uid);
     window.location.href = "main.html";
   }
 });
+// export{user_email};
 
 let eye = document.getElementById("eye");
 let slasheye = document.getElementById("slasheye");
@@ -39,14 +49,16 @@ eye.addEventListener('click', () => { //TogglePassword
   pass.type = "text";
   eye.style.display = "none";
   slasheye.style.display = "inline";
+  // setTimeout(hide,500);
 });
 
-slasheye.addEventListener('click', () => { //TogglePassword
+slasheye.addEventListener('click', hide); 
+
+function hide() { //TogglePassword
   pass.type = "password";
   eye.style.display = "inline";
   slasheye.style.display = "none";
-
-});
+}
 
 function googlesign(){    //Google Sign In
   var provider = new firebase.auth.GoogleAuthProvider();
@@ -114,5 +126,9 @@ function reset() {    //Forget Password
   });
 }
 
+function preloader() {
+  document.getElementById("loading").style.display="none";
+  
+}
 
-
+setTimeout(preloader,3000);

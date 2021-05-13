@@ -14,6 +14,7 @@
 <script src="https://kit.fontawesome.com/8af6f81983.js" crossorigin="anonymous"></script>
 
 <body onload="optSel()">
+  <div id="loading"></div>
   <div class="main">
     <div class="header">
       <h1>GameIt</h1>
@@ -51,8 +52,8 @@
       <div class="user">
         <select name="user" id="useroptions" onchange="optionselect()">
           <option class="option" disabled="disabled" selected="selected">Options</option>
-          <option value="admin">Admin Portal</option>
-          <option value="logout">Logout</option>
+          <option value="admin" id="admin">Admin Portal</option>
+          <option value="logout" id="logout">Logout</option>
         </select>
       </div>
       <h4>A fathomless world of online games</h4>
@@ -137,6 +138,23 @@
 <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
 
-<script src="main.js"></script>
+<script>
+  // Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+var firebaseConfig = {
+  apiKey: "AIzaSyCDMvFD5zthICujULAK7ocBmpZamJ7View",
+  authDomain: "gamebase-fa264.firebaseapp.com",
+  projectId: "gamebase-fa264",
+  storageBucket: "gamebase-fa264.appspot.com",
+  messagingSenderId: "307863343800",
+  appId: "1:307863343800:web:8a4bf144a06b04f4869a4d",
+  measurementId: "G-5L8T4Q6WGY"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+</script>
 
+<script src="main.js"></script>
+<!-- <script src="test.js"></script> -->
 </html>

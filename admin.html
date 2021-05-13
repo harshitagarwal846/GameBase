@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +13,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/8af6f81983.js" crossorigin="anonymous"></script>
+
 <body>
+    <div id="loading"></div>
     <div class="main">
         <div class="header">
             <h1>GameIt</h1>
@@ -42,14 +45,21 @@
                 </div>
             </div>
             <div class="box" id="makeadmin">
-                <p class="heading" id="heading2">Make Admin</p>
-                <p id="heading3">Please enter the unique ID of the user to be made admin.</p>
+                <p class="heading" id="heading2">Make/Remove Admin</p>
+                <p id="heading3">Please enter the email of the user whose admin status needs to be changed.</p>
+                <!-- <div class="info" id="divstatus">
+                    <select name="status" id="status">
+                        <option value="make">Make Admin</option>
+                        <option value="remove">Remove from Admin</option>
+                    </select>
+                </div> -->
                 <div class="info">
                     <i class="fa fa-user" aria-hidden="true"></i>
-                    <input type="text" id="uid" placeholder="User UID">
+                    <input type="email" id="email" placeholder="User Email">
                 </div>
                 <div class="btn">
-                    <button class="btn_submit" id="admin" onclick="admin()">Make Admin</button>
+                    <button class="btn_submit" id="make" onclick="make()">Make Admin</button>
+                    <button class="btn_submit" id="remove" onclick="remove()">Remove from Admin</button>
                 </div>
             </div>
         </div>

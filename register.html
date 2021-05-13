@@ -15,6 +15,7 @@
 <script src="https://kit.fontawesome.com/8af6f81983.js" crossorigin="anonymous"></script>
 
 <body>
+    <div id="loading"></div>
     <div class="main">
         <div class="header">
             <h1>GameIt</h1>
@@ -26,6 +27,10 @@
                 <div class="info">
                     <i class="fa fa-user" aria-hidden="true"></i>
                     <input type="email" name="email" id="email" placeholder="Email">
+                </div>
+                <div class="info">
+                    <i class="fa fa-calendar"></i>
+                    <input type="text" name="dob" id="dob" placeholder="Date of Birth" onfocus="(this.type='date')">
                 </div>
 
                 <div class="info">
@@ -54,6 +59,7 @@
      https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
 
 <script>
   // Your web app's Firebase configuration

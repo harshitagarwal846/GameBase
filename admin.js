@@ -32,10 +32,80 @@ function upload() {
     document.getElementById("gamelink").value = "";
 }
 
-function admin() {
-    // Set admin privilege on the user corresponding to uid.
-    let uid = document.getElementById("uid").value;
-    admin.auth().setCustomUserClaims(uid, { admin: true }).then(() => {
-        window.alert("You're now an admin");
+function make() {
+    let email = document.getElementById("email").value;
+    var ref = firebase.database().ref("Users");
+    var emails, admins, check = 0;
+    ref.on("value", (snap) => {
+        // console.log(snap.val());
+        var users = snap.val();
+        var keys = Object.keys(users);
+        // console.log(keys);  
+        for (let i = 0; i < keys.length; i++) {
+            var k = keys[i];
+            emails = users[k].Email;
+            admins = users[k].Admin;
+            if (emails === email) {
+                if (admins === "False") {
+                    firebase.database().ref().child("Users").child(k).child("Admin").set("True");
+
+                    check = 1;
+                    break;
+                }
+                else {
+                    window.alert("The user is already an admin");
+                    check = 2;
+                }
+            }
+            // console.log(emails, admins, k);
+        }
+        if (check == 0)
+            window.alert("No such user found");
+        else if (check == 1)
+            window.alert(emails + " is now an admin!");
     });
+    // email.value = "";
 }
+
+function remove() {
+    let email = document.getElementById("email").value;
+    var ref = firebase.database().ref("Users");
+    var emails, admins, check = 0;
+    ref.on("value", (snap) => {
+        // console.log(snap.val());
+        var users = snap.val();
+        var keys = Object.keys(users);
+        // console.log(keys);  
+        for (let i = 0; i < keys.length; i++) {
+            var k = keys[i];
+            emails = users[k].Email;
+            admins = users[k].Admin;
+            if (emails === email) {
+                if (admins === "True") {
+                    firebase.database().ref().child("Users").child(k).child("Admin").set("False");
+
+                    check = 1;
+                    break;
+                }
+                else {
+                    window.alert("The user is not an admin yet");
+                    check = 2;
+                }
+            }
+            // console.log(emails, admins, k);
+        }
+        if (check == 0)
+            window.alert("No such user found");
+        else if (check == 1)
+            window.alert(emails + " is now not an admin!");
+
+    });
+    // email.value = "";
+}
+
+function preloader() {
+    document.getElementById("loading").style.display = "none";
+
+}
+
+setTimeout(preloader,3000);
