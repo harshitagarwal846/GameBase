@@ -149,14 +149,14 @@ h4{
     visibility: hidden;
     display: inline-block;
     position: absolute;
-    height: 250px;
-    width: 307px;
+    height: 39.3%;
+    width: 22.9%;
     background: rgba(0, 0, 0, 0.637);
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    transform: translateY(71%);
+    transform: translateY(69%);
     /* transition: all 0.5s; */
     color: white;
     margin: 4px;
@@ -165,28 +165,28 @@ h4{
     font-family: 'Ubuntu Condensed', sans-serif;
 }
 #flip2{
-    left: 342px;
+    left: 25.3%;
 }
 #flip3{
-    left: 683px;
+    left: 50.6%;
 }
 #flip4{
-    left: 1024px;
+    left: 75.9%;
 }
 #flip5{
-    top: 324px;
+    top: 50.6%;
 }
 #flip6{
-    top: 324px;
-    left: 342px;
+    top: 50.6%;
+    left: 25.3%;
 }
 #flip7{
-    top: 324px;
-    left: 683px;
+    top: 50.6%;
+    left: 50.6%;
 }
 #flip8{
-    top: 324px;
-    left: 1024px;
+    top: 50.6%;
+    left: 75.9%;
 }
 h3{
     font-size: 25px;
